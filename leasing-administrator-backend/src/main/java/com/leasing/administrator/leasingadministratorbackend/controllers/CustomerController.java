@@ -6,10 +6,10 @@ import com.leasing.administrator.leasingadministratorbackend.services.CustomerSe
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/customers")
@@ -22,6 +22,13 @@ public class CustomerController {
     public ResponseEntity<CustomerDTO> createCustomer(@RequestBody CustomerDTO customerDTO) {
         Customer customer = this.customerService.createCustomer(customerDTO.toEntity());
         return new ResponseEntity<>(new CustomerDTO(customer), HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
+        List<Customer> customers = this.customerService.getAllCustomers();
+        List<CustomerDTO> customerDTOS = customers.stream().map(CustomerDTO::new).collect(Collectors.toList());
+        return new ResponseEntity<>(customerDTOS, HttpStatus.OK);
     }
 
 }
