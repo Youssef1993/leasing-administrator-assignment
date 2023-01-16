@@ -1,0 +1,29 @@
+version: "2.1"
+services:
+  leasing-administrator-backend:
+    image: leasing-administrator-backend
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/leasing_administrator_db
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysqldb:
+        condition: service_healthy
+ 
+  mysqldb:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=leasing_administrator_db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+  webapp:
+    image: la-web-server
+    ports:
+      - "80:80"
+    depends_on:
+      - leasing-administrator-backend
