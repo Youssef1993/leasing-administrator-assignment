@@ -1,5 +1,6 @@
 package com.leasing.administrator.leasingadministratorbackend.entities;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,14 @@ public class Customer {
     private String lastName;
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
+
+    @Builder
+    public Customer(Long id, String firstName, String lastName, LocalDate birthDate) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
 
     /**
      * Equals method here uses the id field for the lack of a natural identifier

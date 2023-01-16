@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Manage Customers</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-outline-primary" (click)="createNewCustomer()">New Customer</button>
+    </div>
+  </div>
+</div>
+<app-customer-form [(display)]="displayForm" [customer]="selectedCustomer"></app-customer-form>

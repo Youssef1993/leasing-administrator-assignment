@@ -1,0 +1,29 @@
+<p-dialog header="Customer Form" [(visible)]="display"  [modal]="true" [appendTo]="'body'" [style]="{width: '25vw'}" (onHide)="cancel()">
+<div class="container customer-form-container">
+  <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label>First Name</label>
+      <input type="text" name="firstname" class="form-control" [(ngModel)]="customer.firstName" placeholder="First Name" maxlength="255" [required]="true"/>
+    </div>
+    <div class="form-group">
+      <label>Last Name</label>
+      <input type="text" name="lastname" class="form-control" [(ngModel)]="customer.lastName" placeholder="Last Name" maxlength="255" [required]="true"/>
+    </div>
+    <div class="form-group">
+      <label>Birthdate</label>
+      <p-calendar [(ngModel)]="customer.birthDate" name="birthDate" [styleClass]="'customer-date-picker'" placeholder="Birth Date" [required]="true"></p-calendar>
+    </div>
+  </form>
+</div>
+
+  <ng-template pTemplate="footer">
+    <div class="container">
+      <div class="row text-end">
+        <div class="col-12">
+          <button class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+          <button class="btn btn-danger" (click)="onFormSubmit(f)"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>

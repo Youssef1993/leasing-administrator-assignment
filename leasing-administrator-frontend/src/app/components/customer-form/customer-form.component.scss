@@ -1,0 +1,11 @@
+.customer-form-container {
+  height: 50vh;
+  ::ng-deep .customer-date-picker {
+    display: block;
+    width: 100%;
+    input {
+      display: block;
+      width: 100%;
+    }
+  }
+}
