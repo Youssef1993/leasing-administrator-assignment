@@ -24,10 +24,13 @@
           <td>{{customer.firstName}}</td>
           <td>{{customer.lastName}}</td>
           <td>{{customer.birthDate | date}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editCustomer(customer)" >Edit</button>
+          </td>
         </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<app-customer-form [(display)]="displayForm" [customer]="selectedCustomer"></app-customer-form>
+<app-customer-form [(display)]="displayForm" [customer]="selectedCustomer" (customerUpdated)="onCustomerUpdate($event)"></app-customer-form>

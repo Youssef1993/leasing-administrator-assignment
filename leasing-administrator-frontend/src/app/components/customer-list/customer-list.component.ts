@@ -30,4 +30,20 @@ export class CustomerListComponent implements OnInit{
       this.customers = res;
     })
   }
+
+  editCustomer(customer: Customer) {
+    customer = JSON.parse(JSON.stringify(customer))
+    customer.birthDate = new Date(customer.birthDate);
+    this.selectedCustomer = customer;
+    this.displayForm = true;
+  }
+
+  onCustomerUpdate(customer: Customer) {
+    const oldCustomerIndex = this.customers.findIndex(c => c.id === customer.id);
+    if (oldCustomerIndex < 0) {
+      return;
+    }
+    this.customers.splice(oldCustomerIndex, 1, customer);
+  }
+
 }

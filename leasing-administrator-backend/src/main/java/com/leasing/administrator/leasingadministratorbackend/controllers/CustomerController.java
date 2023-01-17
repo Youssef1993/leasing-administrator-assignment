@@ -31,4 +31,10 @@ public class CustomerController {
         return new ResponseEntity<>(customerDTOS, HttpStatus.OK);
     }
 
+    @PutMapping
+    public ResponseEntity<Void> editCustomer(@RequestBody CustomerDTO customerDTO) {
+        this.customerService.editCustomer(customerDTO.toEntity());
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
 }

@@ -1,4 +1,4 @@
-<p-dialog header="Customer Form" [(visible)]="display"  [modal]="true" [appendTo]="'body'" [style]="{width: '25vw'}" (onHide)="cancel()">
+<p-dialog header="Customer Form" [(visible)]="display"  [modal]="true" [appendTo]="'body'" [style]="{width: '25vw'}" (onHide)="closePopup()">
 <div class="container customer-form-container">
   <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
     <div class="form-group">
@@ -20,7 +20,7 @@
     <div class="container">
       <div class="row text-end">
         <div class="col-12">
-          <button class="btn btn-outline-dark" (click)="cancel()">Cancel</button>
+          <button class="btn btn-outline-dark" (click)="closePopup()">Cancel</button>
           <button class="btn btn-danger" (click)="onFormSubmit(f)"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
         </div>
       </div>

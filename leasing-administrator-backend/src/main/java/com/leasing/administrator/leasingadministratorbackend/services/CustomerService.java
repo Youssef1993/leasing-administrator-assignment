@@ -19,6 +19,11 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    @Transactional
+    public void editCustomer(Customer customer) {
+        customerRepository.save(customer);
+    }
+
     public List<Customer> getAllCustomers(){
         return customerRepository.findAll();
     }

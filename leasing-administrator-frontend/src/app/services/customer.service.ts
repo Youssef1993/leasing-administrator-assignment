@@ -16,6 +16,10 @@ export class CustomerService {
     return this.http.post<Customer>(this.CUSTOMER_API, customer);
   }
 
+  updateCustomer(customer: Customer): Observable<void> {
+    return this.http.put<void>(this.CUSTOMER_API, customer);
+  }
+
   getCustomerList(): Observable<Array<Customer>> {
     return this.http.get<Array<Customer>>(this.CUSTOMER_API);
   }

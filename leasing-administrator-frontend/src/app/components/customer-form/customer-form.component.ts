@@ -12,6 +12,7 @@ export class CustomerFormComponent {
   @Input() display = false;
   @Output() displayChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() customer: Customer = new Customer();
+  @Output() customerUpdated: EventEmitter<Customer> = new EventEmitter<Customer>();
 
 
   constructor(private customerService: CustomerService) {
@@ -21,13 +22,27 @@ export class CustomerFormComponent {
     if (!f.valid) {
       return;
     }
+    if (this.customer.id) {
+      this.updateCustomer();
+    } else {
+      this.saveNewCustomer();
+    }
+  }
+
+  saveNewCustomer() {
     this.customerService.createCustomer(this.customer).subscribe(res => {
-      console.log(res);
-      this.cancel();
+      this.closePopup();
     });
   }
 
-  cancel() {
+  updateCustomer() {
+    this.customerService.updateCustomer(this.customer).subscribe(() => {
+      this.customerUpdated.emit(this.customer);
+      this.closePopup();
+    });
+  }
+
+  closePopup() {
     this.displayChange.emit(false);
     this.customer = new Customer();
   }
