@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Manage Vehicles</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-outline-primary" (click)="createNewVehicle()">New Vehicle</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Brand</th>
+          <th>Model year</th>
+          <th>Identification Number</th>
+          <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let vehicle of vehicles">
+          <td>{{vehicle.brand}}</td>
+          <td>{{vehicle.modelYear}}</td>
+          <td>{{vehicle.identificationNumber}}</td>
+          <td>{{vehicle.price | currency:'EUR':true}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editVehicle(vehicle)" >Edit</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-vehicle-form [(display)]="displayForm" [vehicle]="selectedVehicle" (vehicleUpdated)="onVehicleUpdate($event)" (vehicleAdded)="onVehicleAdded($event)"></app-vehicle-form>
