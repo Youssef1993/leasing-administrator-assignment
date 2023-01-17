@@ -22,7 +22,7 @@ export class CustomerFormComponent {
 
   onFormSubmit(f: NgForm) {
     if (!f.valid) {
-      return;
+      // return;
     }
     if (this.customer.id) {
       this.updateCustomer();

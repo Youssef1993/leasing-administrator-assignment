@@ -1,6 +1,7 @@
 package com.leasing.administrator.leasingadministratorbackend.dtos;
 
 import com.leasing.administrator.leasingadministratorbackend.entities.Customer;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,14 @@ public class CustomerDTO {
     private String lastName;
     @NotNull
     private LocalDate birthDate;
+
+    @Builder
+    public CustomerDTO(Long id, String firstName, String lastName, LocalDate birthDate) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
 
     public CustomerDTO(Customer customer) {
         this.id = customer.getId();
