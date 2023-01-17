@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Customer} from '../../dto/customer';
 import {NgForm} from "@angular/forms";
 import {CustomerService} from "../../services/customer.service";
+import {CustomerListComponent} from "../customer-list/customer-list.component";
 
 @Component({
   selector: 'app-customer-form',
@@ -13,6 +14,7 @@ export class CustomerFormComponent {
   @Output() displayChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() customer: Customer = new Customer();
   @Output() customerUpdated: EventEmitter<Customer> = new EventEmitter<Customer>();
+  @Output() customerAdded: EventEmitter<Customer> = new EventEmitter<Customer>();
 
 
   constructor(private customerService: CustomerService) {
@@ -31,6 +33,7 @@ export class CustomerFormComponent {
 
   saveNewCustomer() {
     this.customerService.createCustomer(this.customer).subscribe(res => {
+      this.customerAdded.emit(res);
       this.closePopup();
     });
   }

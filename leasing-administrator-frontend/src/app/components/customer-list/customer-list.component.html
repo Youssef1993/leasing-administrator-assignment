@@ -33,4 +33,4 @@
     </div>
   </div>
 </div>
-<app-customer-form [(display)]="displayForm" [customer]="selectedCustomer" (customerUpdated)="onCustomerUpdate($event)"></app-customer-form>
+<app-customer-form [(display)]="displayForm" [customer]="selectedCustomer" (customerUpdated)="onCustomerUpdate($event)" (customerAdded)="onCustomerAdded($event)"></app-customer-form>

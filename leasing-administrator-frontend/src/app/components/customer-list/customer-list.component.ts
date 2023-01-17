@@ -46,4 +46,7 @@ export class CustomerListComponent implements OnInit{
     this.customers.splice(oldCustomerIndex, 1, customer);
   }
 
+  onCustomerAdded(customer: Customer) {
+    this.customers.splice(0, 0, customer);
+  }
 }
