@@ -2,7 +2,6 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Customer} from '../../dto/customer';
 import {NgForm} from "@angular/forms";
 import {CustomerService} from "../../services/customer.service";
-import {CustomerListComponent} from "../customer-list/customer-list.component";
 
 @Component({
   selector: 'app-customer-form',
@@ -22,7 +21,7 @@ export class CustomerFormComponent {
 
   onFormSubmit(f: NgForm) {
     if (!f.valid) {
-      // return;
+      return;
     }
     if (this.customer.id) {
       this.updateCustomer();

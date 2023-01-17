@@ -10,13 +10,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CalendarModule} from 'primeng/calendar';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
+import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerListComponent,
     CustomerFormComponent,
-    NavbarComponent
+    NavbarComponent,
+    VehicleListComponent,
+    VehicleFormComponent
   ],
   imports: [
     BrowserModule,

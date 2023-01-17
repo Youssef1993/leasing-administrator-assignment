@@ -1,5 +1,6 @@
 package com.leasing.administrator.leasingadministratorbackend.entities;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +22,15 @@ public class Vehicle {
     private short modelYear;
     private String identificationNumber;
     private double price;
+
+    @Builder
+    public Vehicle(Long id, String brand, short modelYear, String identificationNumber, double price) {
+        this.id = id;
+        this.brand = brand;
+        this.modelYear = modelYear;
+        this.identificationNumber = identificationNumber;
+        this.price = price;
+    }
 
     /**
      * Equals method here uses the id field for the lack of a natural identifier
