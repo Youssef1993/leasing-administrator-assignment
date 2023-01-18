@@ -1,9 +1,11 @@
 package com.leasing.administrator.leasingadministratorbackend.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
+@Profile("dev")
 public class WebConfig implements WebMvcConfigurer {
 
     private static final String allowedOrigin = "http://localhost:4200";
