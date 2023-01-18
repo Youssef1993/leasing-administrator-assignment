@@ -24,4 +24,8 @@ export class VehicleService {
   getVehicleList(): Observable<Array<Vehicle>> {
     return this.http.get<Array<Vehicle>>(this.VEHICLE_API);
   }
+
+  getVehiclesWithoutContract(): Observable<Array<Vehicle>> {
+    return this.http.get<Array<Vehicle>>(this.VEHICLE_API + '?withoutContract=1');
+  }
 }

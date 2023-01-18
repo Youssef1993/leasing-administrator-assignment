@@ -20,12 +20,12 @@ public class VehicleControllerIntegrationTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void tetValidationForCustomerCreation_should_fail() {
+    public void tetValidationForVehicleCreation_should_fail() {
         assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "/api/vehicles", new VehicleDTO(), VehicleDTO.class).getStatusCodeValue()).isEqualTo(400);
     }
 
     @Test
-    public void tetValidationForCustomerCreation_should_pass() {
+    public void tetValidationForVehicleCreation_should_pass() {
 
         String brand = "TBrand";
         short modelYear =1850;

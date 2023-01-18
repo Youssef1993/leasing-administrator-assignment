@@ -26,8 +26,13 @@ public class VehicleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<VehicleDTO>> getAllVehicles() {
-        List<Vehicle> vehicles = this.vehicleService.getAllVehicles();
+    public ResponseEntity<List<VehicleDTO>> getAllVehicles(@RequestParam(defaultValue = "0", required = false, name = "withoutContract") boolean withoutContract) {
+        List<Vehicle> vehicles;
+        if (withoutContract) {
+            vehicles = this.vehicleService.getVehiclesWithoutContract();
+        } else  {
+            vehicles = this.vehicleService.getAllVehicles();
+        }
         List<VehicleDTO> vehicleDTOS = vehicles.stream().map(VehicleDTO::new).collect(Collectors.toList());
         return new ResponseEntity<>(vehicleDTOS, HttpStatus.OK);
     }

@@ -1,5 +1,6 @@
 package com.leasing.administrator.leasingadministratorbackend.entities;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +21,13 @@ public class LeasingContract {
     private String contractNumber;
     @Column(name = "monthly_rate", nullable = false)
     private BigDecimal monthlyRate;
+
+    @Builder
+    public LeasingContract(LeasingContractId id, String contractNumber, BigDecimal monthlyRate) {
+        this.id = id;
+        this.contractNumber = contractNumber;
+        this.monthlyRate = monthlyRate;
+    }
 
     /**
      * the equals method here uses the contract number because it's a natural identifier, it can be used to compare objects

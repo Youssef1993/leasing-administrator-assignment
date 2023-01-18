@@ -12,7 +12,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CalendarModule} from 'primeng/calendar';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
-
+import { LeasingContractListComponent } from './components/leasing-contract-list/leasing-contract-list.component';
+import { LeasingContractFormComponent } from './components/leasing-contract-form/leasing-contract-form.component';
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,9 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     CustomerFormComponent,
     NavbarComponent,
     VehicleListComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    LeasingContractListComponent,
+    LeasingContractFormComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     DialogModule,
     FormsModule,
     BrowserAnimationsModule,
-    CalendarModule
+    CalendarModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

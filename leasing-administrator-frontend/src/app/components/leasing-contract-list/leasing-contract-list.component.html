@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>Manage Leasing Contracts</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-outline-primary" (click)="createNewContract()">New Leasing Contract</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Contract No</th>
+          <th>Customer</th>
+          <th>Vehicle</th>
+          <th>VIN</th>
+          <th>Monthly Rate</th>
+          <th>Vehicle Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let contract of contracts">
+          <td>{{contract.contractNumber}}</td>
+          <td>{{contract.customer.firstName + ' ' + contract.customer.lastName}}</td>
+          <td>{{contract.vehicle.brand + '(' + contract.vehicle.modelYear + ')'}}</td>
+          <td>{{contract.vehicle.identificationNumber ? contract.vehicle.identificationNumber : '-'}}</td>
+          <td>{{contract.monthlyRate | currency:'EUR':true}}</td>
+          <td>{{contract.vehicle.price | currency:'EUR':true}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editContract(contract)" >Edit</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<app-leasing-contract-form [(display)]="displayForm" [contract]="selectedContract" (contractUpdated)="onContractUpdate($event)" (contractAdded)="onContractAdded($event)" [mode]="mode"></app-leasing-contract-form>

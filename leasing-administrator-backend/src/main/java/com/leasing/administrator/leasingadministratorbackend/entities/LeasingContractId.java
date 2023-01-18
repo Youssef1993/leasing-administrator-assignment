@@ -14,13 +14,18 @@ import java.util.Objects;
 @NoArgsConstructor
 public class LeasingContractId implements Serializable {
 
-    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    public LeasingContractId(Vehicle vehicle, Customer customer) {
+        this.vehicle = vehicle;
+        this.customer = customer;
+    }
 
     @Override
     public boolean equals(Object o) {

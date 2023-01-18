@@ -19,6 +19,11 @@ public class VehicleService {
         return vehicleRepository.save(vehicle);
     }
 
+    @Transactional
+    public void updateVehicleIdentificationNumber(String identificationNumber, Long vehicleId) {
+        this.vehicleRepository.updateVehicleIdentificationNumber(identificationNumber, vehicleId);
+    }
+
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
@@ -26,5 +31,9 @@ public class VehicleService {
     @Transactional
     public void editVehicle(Vehicle vehicle) {
         vehicleRepository.save(vehicle);
+    }
+
+    public List<Vehicle> getVehiclesWithoutContract() {
+        return vehicleRepository.findVehiclesWithoutContract();
     }
 }

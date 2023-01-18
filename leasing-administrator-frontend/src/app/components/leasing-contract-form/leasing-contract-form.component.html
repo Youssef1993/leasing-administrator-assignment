@@ -1,0 +1,51 @@
+<p-dialog header="Leasing Contract Form" [(visible)]="display"  [modal]="true" [appendTo]="'body'" [style]="{width: '25vw'}" (onHide)="closePopup()">
+  <div class="container contract-form-container">
+    <form (ngSubmit)="onFormSubmit(f)" #f="ngForm">
+      <div class="form-group">
+        <label>Customer</label>
+        <p-dropdown [options]="customers" [(ngModel)]="contract.customer" name="customer" placeholder="Customer">
+          <ng-template pTemplate="selectedItem">
+            <div>{{contract.customer.firstName + ' ' + contract.customer.lastName}}</div>
+          </ng-template>
+          <ng-template let-customer pTemplate="item">
+            <div>{{customer.firstName + ' ' + customer.lastName}}</div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="form-group">
+        <label>Vehicle</label>
+        <p-dropdown [options]="vehicles" [(ngModel)]="contract.vehicle" name="vehicle" placeholder="Vehicle">
+          <ng-template pTemplate="selectedItem">
+            <div>{{contract.vehicle.brand + ' (' + contract.vehicle.modelYear + ')'}}</div>
+          </ng-template>
+          <ng-template let-vehicle pTemplate="item">
+            <div>{{vehicle.brand + ' (' + vehicle.modelYear + ')'}}</div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="form-group" *ngIf="contract.vehicle">
+        <label>Identification Number</label>
+        <input type="text" name="identificationNumber" class="form-control" [(ngModel)]="contract.vehicle.identificationNumber" placeholder="Identification Number"/>
+      </div>
+      <div class="form-group">
+        <label>Contract Number</label>
+        <input type="text" name="contractNumber" class="form-control" [(ngModel)]="contract.contractNumber" placeholder="Contract Number" [required]="true"/>
+      </div>
+      <div class="form-group">
+        <label>Monthly Rate</label>
+        <input type="number" name="monthlyRate" class="form-control" [(ngModel)]="contract.monthlyRate" placeholder="Monthly Rate" [required]="true" [min]="0"/>
+      </div>
+    </form>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <div class="container">
+      <div class="row text-end">
+        <div class="col-12">
+          <button class="btn btn-outline-dark" (click)="closePopup()">Cancel</button>
+          <button class="btn btn-danger" (click)="onFormSubmit(f)"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-dialog>
