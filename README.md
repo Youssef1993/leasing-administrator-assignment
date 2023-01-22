@@ -15,7 +15,7 @@ In Order to run the app we need to have installed on our computer:
 ### Inside the front-end application project
 * run **ng build** to build the Angular app
 * run  **docker image build -t la-web-server .** to build docker image for nginx web server serving static content for the SPA
-###Back to the back-end project
+### Back to the back-end project
 * run **docker-compose up** to run the app
 
 ### How it works
